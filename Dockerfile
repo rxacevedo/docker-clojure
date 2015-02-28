@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Roberto Acevedo "rxacevedo@gmail.com"
+MAINTAINER Roberto Acevedo "rxacevedo@fastmail.com"
 ENV REFRESHED_AT 2015-02-28:01:41:PM
 
 # Get some dependencies for buliding the environment
