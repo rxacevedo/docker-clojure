@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 MAINTAINER Roberto Acevedo "rxacevedo@fastmail.com"
-ENV REFRESHED_AT 2015-02-28:01:41:PM
+ENV REFRESHED_AT 2015-03-01:20:30
 
 # Get some dependencies for buliding the environment
 RUN apt-get update && \
@@ -35,5 +35,8 @@ RUN mkdir -p ~/code/clojure/ && \
     cd ~/code/clojure/hacking && \
     lein deps
 
-# Start emacs, hack away!
-ENTRYPOINT /opt/emacs/bin/emacs
+# Put emacs on the path
+ENV PATH /opt/emacs/bin:$PATH
+
+# Do some work
+WORKDIR /root/code
