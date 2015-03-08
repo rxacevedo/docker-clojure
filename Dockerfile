@@ -1,10 +1,10 @@
 FROM ubuntu:latest
 MAINTAINER Roberto Acevedo "rxacevedo@fastmail.com"
-ENV REFRESHED_AT 2015-03-01:20:30
+ENV REFRESHED_AT 2015-03-08:14:26
 
 # Get some dependencies for buliding the environment
 RUN apt-get update && \
-    apt-get install -y build-essential curl git openjdk-7-jdk
+    apt-get install -y build-essential curl git openjdk-7-jdk maven
 
 # Set up emacs
 WORKDIR /usr/tmp
@@ -16,6 +16,9 @@ RUN curl -O http://ftp.gnu.org/gnu/emacs/emacs-24.4.tar.gz && \
     ./configure --prefix=/opt/emacs && \
     make && \
     make install
+RUN curl -O http://download-cf.jetbrains.com/idea/ideaIU-14.0.3.tar.gz && \
+    tar -zxvf ideaIU-14.0.3.tar.gz && \
+    mv idea-IU-139.1117.1/ /opt/idea
  
 # Set up leiningen
 WORKDIR /usr/bin/
@@ -36,7 +39,7 @@ RUN mkdir -p ~/code/clojure/ && \
     lein deps
 
 # Put emacs on the path
-ENV PATH /opt/emacs/bin:$PATH
+ENV PATH /opt/emacs/bin:/opt/idea/bin:$PATH
 
 # Do some work
 WORKDIR /root/code
