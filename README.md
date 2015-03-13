@@ -35,10 +35,6 @@ With Docker Compose:
 
 To start the the entire service (which is just one app) and attach, just run `docker-compose up`.
 
-If you want to invoke the repl via docker compose, specify the container alias in a `run` command, like this:
-
-`docker-compose run app repl`
-
 ## License
 
 I don't own any of this.
