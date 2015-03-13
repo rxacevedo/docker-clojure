@@ -1,11 +1,47 @@
 # clojure-env-docker
-A quick and dirty Docker image for Clojure development with display forwarding to X11 - emacs GUI runs in the container!
 
-## Docker build
-The contents of this repository are run through an automated Docker build on [Docker hub](https://registry.hub.docker.com/u/rxacevedo/clojure-env-docker/) upon push to `master`.
+A containzerized Clojure dev environment.
 
-## Instructions
+## Prerequisites
 
-`./setup.sh`
+You will need [Docker][] 1.5.0 or above, since that's what I built this against. [Docker compose][] is optional, but   makes startup a little easier. If you're on a Mac, you will also need [boot2docker][] and [VirtualBox][].
 
-That's it.
+### Mac
+If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requisites like so:   
+`brew install boot2docker docker docker-compose && brew cask install virtualbox`
+
+[docker]: https://www.docker.com
+[docker compose]: https://github.com/docker/compose/
+[boot2docker]: http://boot2docker.io
+[virtualbox]: https://www.virtualbox.org
+[homebrew]: http://brew.sh
+[homebrew cask]: http://caskroom.io
+
+## Running
+
+With Docker CLI: 
+
+```
+docker build -t <username>/clojure-env-docker . && \
+docker run -p 80:80 -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker
+```
+
+If you want to start a REPL instead of the actual app, you can do so by adding `repl` to the end of the argument list for `docker run` like this:
+
+```
+docker run -p 80:80 -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker repl
+```
+
+With Docker Compose:
+
+To start the the entire service (which is just one app) and attach, just run `docker-compose up`.
+
+If you want to invoke the repl via docker compose, specify the container alias in a `run` command, like this:
+
+```
+docker-compose run app repl
+```
+
+## License
+
+I don't own any of this.
