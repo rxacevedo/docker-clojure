@@ -20,7 +20,7 @@ If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requ
 
 ## Running
 
-With Docker CLI: 
+- With Docker CLI: 
 
 ```
 docker build -t <username>/clojure-env-docker . && \
@@ -31,7 +31,7 @@ If you want to start a REPL instead of the actual app, you can do so by adding `
 
 `docker run -p 80:80 -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker repl`
 
-With Docker Compose:
+- With Docker Compose CLI:
 
 To start the the entire service (which is just one app) and attach, just run `docker-compose up`.
 
