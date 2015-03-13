@@ -4,10 +4,10 @@ MAINTAINER Roberto Acevedo "rxacevedo@fastmail.com"
 ENV PORT=80 LEIN_REPL_PORT=4001
 
 # If you want, comment out to create a very unsecure SSH server for TRAMP mode, etc
-RUN apt-get update && \
-    apt-get install -y openssh-server
-RUN sed -i 's/\(PermitRootLogin\).*/\1 yes/' /etc/ssh/sshd_config && \
-    /etc/init.d/ssh restart
+# RUN apt-get update && \
+#     apt-get install -y openssh-server
+# RUN sed -i 's/\(PermitRootLogin\).*/\1 yes/' /etc/ssh/sshd_config && \
+#     /etc/init.d/ssh restart
 
 EXPOSE 80 4001
 EXPOSE 22
