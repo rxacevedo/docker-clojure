@@ -12,6 +12,9 @@ ENV PORT=80 LEIN_REPL_PORT=4001
 EXPOSE 80 4001
 EXPOSE 22
 
+# Add profiles
+RUN curl -o ~/.lein/profiles.clj https://raw.githubusercontent.com/rxacevedo/.lein/master/profiles.clj
+
 ADD . /code
 WORKDIR /code
 RUN ["lein", "deps"]
