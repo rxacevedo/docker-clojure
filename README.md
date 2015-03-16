@@ -14,7 +14,7 @@ If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requ
 `brew install boot2docker docker docker-compose && brew cask install virtualbox`
 
 [docker]: https://www.docker.com
-[docker compose]: https://github.com/docker/compose/
+[docker compose]: https://github.com/docker/compose
 [boot2docker]: http://boot2docker.io
 [virtualbox]: https://www.virtualbox.org
 [homebrew]: http://brew.sh
@@ -26,16 +26,16 @@ If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requ
 
 ```
 docker build -t <username>/clojure-env-docker . && \
-docker run -p 80:80 -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker
+docker run -p 80:80 -v $PWD:/code -it <username>/clojure-env-docker
 ```
 
-If you want to start a REPL instead of the actual app, you can do so by adding `repl` to the end of the argument list for `docker run` like this:
+If you want to start a REPL instead of the actual app, you can do so by adding `repl` to the end of the argument list for `docker run` and exposing/publishing the REPL port like this:
 
-`docker run -p 80:80 -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker repl`
+`docker run -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker repl`
 
 - With Docker Compose CLI:
 
-To start the the entire service (which is just one app) and attach, just run `docker-compose up`.
+To start the the entire service (which is just the one webapp) and attach, just run `docker-compose up`.
 
 ## License
 
