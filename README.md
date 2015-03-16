@@ -1,3 +1,4 @@
+[![Docker Repository on Quay.io](https://quay.io/repository/rxacevedo/clojure-env-docker/status "Docker Repository on Quay.io")](https://quay.io/repository/rxacevedo/clojure-env-docker)
 [![Stories in Ready](https://badge.waffle.io/rxacevedo/clojure-env-docker.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/clojure-env-docker)
 # clojure-env-docker
 
