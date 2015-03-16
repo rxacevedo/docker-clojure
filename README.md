@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/rxacevedo/clojure-env-docker.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/clojure-env-docker)
 # clojure-env-docker
 
 A containzerized Clojure dev environment.
