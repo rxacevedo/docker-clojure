@@ -9,6 +9,9 @@ ENV PORT=80 LEIN_REPL_PORT=4001
 # RUN sed -i 's/\(PermitRootLogin\).*/\1 yes/' /etc/ssh/sshd_config && \
 #     /etc/init.d/ssh restart
 
+RUN apt-get update && \
+    apt-get install -y libgfortran3
+
 EXPOSE 80 4001
 EXPOSE 22
 
