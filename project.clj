@@ -6,7 +6,8 @@
                  [ring "1.3.0"]
                  [ring/ring-defaults "0.1.2"]
                  [compojure "1.3.1"]
-                 [environ "0.5.0"]]
+                 [environ "0.5.0"]
+                 [incanter "1.5.6"]]
   :plugins [[lein-ring "0.8.13"]]
   :main sbx.handler
   :ring {:handler sbx.handler/app}
