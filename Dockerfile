@@ -13,7 +13,7 @@ EXPOSE 80 4001
 # Add profiles
 RUN curl -o ~/.lein/profiles.clj https://raw.githubusercontent.com/rxacevedo/.lein/master/profiles.clj
 RUN mkdir /code && \
-          git clone https://github.com/rxacevedo/webapp-base.git /code
+    git clone https://github.com/rxacevedo/webapp-base.git /code
 
 WORKDIR /code
 RUN ["lein", "deps"]
