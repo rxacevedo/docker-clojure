@@ -1,6 +1,5 @@
-[![Docker Repository on Quay.io](https://quay.io/repository/rxacevedo/clojure-env-docker/status "Docker Repository on Quay.io")](https://quay.io/repository/rxacevedo/clojure-env-docker)
-[![Stories in Ready](https://badge.waffle.io/rxacevedo/clojure-env-docker.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/clojure-env-docker)
-# clojure-env-docker
+[![Stories in Ready](https://badge.waffle.io/rxacevedo/clojure-env-docker.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/docker-clojure)
+# docker-clojure
 
 A containzerized Clojure dev environment.
 
@@ -11,14 +10,21 @@ You will need [Docker][] 1.5.0 or above, since that's what I built this against.
 ### Mac
 If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requisites like so:   
 
-`brew install boot2docker docker docker-compose && brew cask install virtualbox`
+`brew install docker docker-compose docker-machine && brew cask install virtualbox`
 
 [docker]: https://www.docker.com
 [docker compose]: https://github.com/docker/compose
-[boot2docker]: http://boot2docker.io
 [virtualbox]: https://www.virtualbox.org
 [homebrew]: http://brew.sh
 [homebrew cask]: http://caskroom.io
+
+Then create a VM with a Docker engine:
+
+`docker-machine create -d virtualbox -d`
+
+Finally, set your environment variabels so that `docker` knows where the Docker engine resides:
+
+`eval "$(docker-machine env dev)"`
 
 ## Running
 
