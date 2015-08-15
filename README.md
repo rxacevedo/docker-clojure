@@ -35,15 +35,11 @@ docker build -t rxacevedo/docker-clojure . && \
 docker run -it rxacevedo/docker-clojure
 ```
 
-This will start a REPL session in the container. If you'd like to hook into it via Emacs/CIDER, you'll need to add this option to the `project.clj` file first:
+If you want to hook into your REPL via Emacs/CIDER, etc:
 
-`:repl-options {:host "0.0.0.0"}`
+`docker run -it -p 4001:4001 -e LEIN_REPL_HOST=0.0.0.0 LEIN_REPL_PORT=4001 rxacevedo/docker-clojure`
 
-This will cause the REPL server in the container to listen on all configured NICs instead of just the loopback interface (localhost). You can do this by overriding the `CMD` instruction in the `Dockerfile` like this:
-
-`docker run -it -p 4001:4001 -e LEIN_REPL_PORT=4001 rxacevedo/docker-clojure /bin/bash`
-
-Then just edit the file (you'll probably need to install a text editor such as `vim`) and you're good to go.
+Setting `LEIN_REPL_HOST` to `0.0.0.0` will cause the REPL server in the container to listen on all configured NICs instead of just the loopback interface (`localhost`/`127.0.0.1`).
 
 ## License
 
