@@ -1,19 +1,19 @@
-[![Stories in Ready](https://badge.waffle.io/rxacevedo/clojure-env-docker.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/docker-clojure)
+[![Stories in Ready](https://badge.waffle.io/rxacevedo/docker-clojure.png?label=ready&title=Ready)](https://waffle.io/rxacevedo/docker-clojure)
 # docker-clojure
 
 A containzerized Clojure dev environment.
 
 ## Prerequisites
 
-You will need [Docker][] 1.5.0 or above, since that's what I built this against. [Docker compose][] is optional, but   makes startup a little easier. If you're on a Mac, you will also need [boot2docker][] and [VirtualBox][].
+You will need [Docker][] 1.5.0 or above, since that's what I built this against. You will also need [VirtualBox][] to create a Docker host via [Docker Machine][] if you don't already have one set up.
 
 ### Mac
 If you have [Homebrew][] and [Homebrew Cask][], you can install all the pre-requisites like so:   
 
-`brew install docker docker-compose docker-machine && brew cask install virtualbox`
+`brew install docker docker-machine && brew cask install virtualbox`
 
 [docker]: https://www.docker.com
-[docker compose]: https://github.com/docker/compose
+[docker machine]: https://github.com/docker/machine
 [virtualbox]: https://www.virtualbox.org
 [homebrew]: http://brew.sh
 [homebrew cask]: http://caskroom.io
@@ -31,17 +31,19 @@ Finally, set your environment variabels so that `docker` knows where the Docker 
 - With Docker CLI: 
 
 ```
-docker build -t <username>/clojure-env-docker . && \
-docker run -p 80:80 -v $PWD:/code -it <username>/clojure-env-docker
+docker build -t rxacevedo/docker-clojure . && \
+docker run -it rxacevedo/docker-clojure
 ```
 
-If you want to start a REPL instead of the actual app, you can do so by adding `repl` to the end of the argument list for `docker run` and exposing/publishing the REPL port like this:
+This will start a REPL session in the container. If you'd like to hook into it via Emacs/CIDER, you'll need to add this option to the `project.clj` file first:
 
-`docker run -p 4001:4001 -v $PWD:/code -it <username>/clojure-env-docker repl`
+`:repl-options {:host "0.0.0.0"}`
 
-- With Docker Compose CLI:
+This will cause the REPL server in the container to listen on all configured NICs instead of just the loopback interface (localhost). You can do this by overriding the `CMD` instruction in the `Dockerfile` like this:
 
-To start the the entire service (which is just the one webapp) and attach, just run `docker-compose up`.
+`docker run -it -p 4001:4001 -e LEIN_REPL_PORT=4001 rxacevedo/docker-clojure /bin/bash`
+
+Then just edit the file (you'll probably need to install a text editor such as `vim`) and you're good to go.
 
 ## License
 
